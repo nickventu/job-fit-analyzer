@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from matcher import get_match
+
 
 app = FastAPI()
 
@@ -8,8 +10,4 @@ def root():
 
 @app.post("/analyze")
 def analyze(resume: str, job_description: str):
-    # placeholder — real logic goes in matcher.py later
-    return {
-        "match_score": 72,
-        "missing_keywords": ["Docker", "React"]
-    }
+    return get_match(resume, job_description)
